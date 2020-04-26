@@ -2,6 +2,8 @@
  * Implementation of  driver for Jailhouse hypervisor
  */
 
+#include <config.h>
+
 #include "jailhouse_driver.h"
 #include "virtypedparam.h"
 #include "virerror.h"
@@ -16,166 +18,178 @@
 #define UNUSED(x) (void)(x)
 
 static virDrvOpenStatus
-jailhouseConnectOpen (virConnectPtr conn, virConnectAuthPtr auth,
-                      virConfPtr conf,
-                      unsigned int flags)
+jailhouseConnectOpen(virConnectPtr conn,
+                     virConnectAuthPtr auth,
+                     virConfPtr conf,
+                     unsigned int flags)
 {
-    UNUSED (conn);
-    UNUSED (auth);
-    UNUSED (conf);
-    UNUSED (flags);
+    UNUSED(conn);
+    UNUSED(auth);
+    UNUSED(conf);
+    UNUSED(flags);
     return 0;
 }
 
 static int
-jailhouseConnectclose (virConnectPtr conn)
+jailhouseConnectClose(virConnectPtr conn)
 {
-    UNUSED (conn);
+    UNUSED(conn);
     return 0;
 }
 
 static const char *
-jailhouseConnectGetType (virConnectPtr conn)
+jailhouseConnectGetType(virConnectPtr conn)
 {
-    UNUSED (conn);
+    UNUSED(conn);
     return NULL;
 
 }
 
 static char *
-jailhouseConnectGetHostname (virConnectPtr conn)
+jailhouseConnectGetHostname(virConnectPtr conn)
 {
-    UNUSED (conn);
+    UNUSED(conn);
     return NULL;
 }
 
 static int
-jailhousenodeGetInfo (virConnectPtr conn, virNodeInfoPtr info)
+jailhouseNodeGetInfo(virConnectPtr conn,
+                     virNodeInfoPtr info)
 {
-    UNUSED (conn);
-    UNUSED (info);
+    UNUSED(conn);
+    UNUSED(info);
     return -1;
 }
 
 static int
-jailhouseConnectListDomains (virConnectPtr conn, int *ids, int maxids)
+jailhouseConnectListDomains(virConnectPtr conn,
+                            int *ids,
+                            int maxids)
 {
-    UNUSED (conn);
-    UNUSED (ids);
-    UNUSED (maxids);
+    UNUSED(conn);
+    UNUSED(ids);
+    UNUSED(maxids);
     return -1;
 }
 
 static int
-jailhouseConnectNumOfDomains (virConnectPtr conn)
+jailhouseConnectNumOfDomains(virConnectPtr conn)
 {
-    UNUSED (conn);
+    UNUSED(conn);
     return -1;
 }
 
 static int
-jailhouseConnectListAllDomains (virConnectPtr conn, virDomainPtr **domain,
-                                unsigned int flags)
+jailhouseConnectListAllDomains(virConnectPtr conn,
+                               virDomainPtr **domain,
+                               unsigned int flags)
 {
-    UNUSED (conn);
-    UNUSED (domain);
-    UNUSED (flags);
+    UNUSED(conn);
+    UNUSED(domain);
+    UNUSED(flags);
     return -1;
 }
 
 static virDomainPtr
-jailhouseDomainLookupByID (virConnectPtr conn, int id)
+jailhouseDomainLookupByID(virConnectPtr conn,
+                          int id)
 {
-    UNUSED (conn);
-    UNUSED (id);
+    UNUSED(conn);
+    UNUSED(id);
     return NULL;
 }
 
 static virDomainPtr
-jailhouseDomainLookupByName (virConnectPtr conn, const char *name)
+jailhouseDomainLookupByName(virConnectPtr conn,
+                            const char *name)
 {
-    UNUSED (conn);
-    UNUSED (name);
+    UNUSED(conn);
+    UNUSED(name);
     return NULL;
 }
 
 static virDomainPtr
-jailhouseDomainLookupByUUID (virConnectPtr conn, const unsigned char *uuid)
+jailhouseDomainLookupByUUID(virConnectPtr conn,
+                            const unsigned char *uuid)
 {
-    UNUSED (conn);
-    UNUSED (uuid);
+    UNUSED(conn);
+    UNUSED(uuid);
     return NULL;
 }
 
 static int
-jailhouseDomainCreate (virDomainPtr domain)
+jailhouseDomainCreate(virDomainPtr domain)
 {
-    UNUSED (domain);
+    UNUSED(domain);
     return -1;
 
 }
 
 static int
-jailhouseDomainShutdown (virDomainPtr domain)
+jailhouseDomainShutdown(virDomainPtr domain)
 {
-    UNUSED (domain);
+    UNUSED(domain);
     return -1;
 }
 
 
 static int
-jailhouseDomainDestroy (virDomainPtr domain)
+jailhouseDomainDestroy(virDomainPtr domain)
 {
-    UNUSED (domain);
+    UNUSED(domain);
     return -1;
 }
 
 static int
-jailhouseDomainGetInfo (virDomainPtr domain, virDomainInfoPtr info)
+jailhouseDomainGetInfo(virDomainPtr domain,
+                       virDomainInfoPtr info)
 {
-    UNUSED (domain);
-    UNUSED (info);
+    UNUSED(domain);
+    UNUSED(info);
     return -1;
 }
 
 static int
-jailhouseDomainGetState (virDomainPtr domain, int *state, int *reason,
-                         unsigned int flags)
+jailhouseDomainGetState(virDomainPtr domain,
+                        int *state,
+                        int *reason,
+                        unsigned int flags)
 {
-    UNUSED (domain);
-    UNUSED (state);
-    UNUSED (reason);
-    UNUSED (flags);
+    UNUSED(domain);
+    UNUSED(state);
+    UNUSED(reason);
+    UNUSED(flags);
     return -1;
 }
 
 static char *
-jailhouseGetXMLDesc (virDomainPtr domain, unsigned int flags)
+jailhouseDomainGetXMLDesc(virDomainPtr domain,
+                          unsigned int flags)
 {
-    UNUSED (domain);
-    UNUSED (flags);
+    UNUSED(domain);
+    UNUSED(flags);
     return NULL;
 }
 
 static virHypervisorDriver jailhouseHypervisorDriver = {
     .name = "JAILHOUSE",
-    .connectOpen = jailhouseConnectOpen,
-    .connectClose = jailhouseConnectclose,
-    .connectListDomains = jailhouseConnectListDomains,
-    .connectNumOfDomains = jailhouseConnectNumOfDomains,
-    .connectListAllDomains = jailhouseConnectListAllDomains,
-    .domainLookupByID = jailhouseDomainLookupByID,
-    .domainLookupByUUID = jailhouseDomainLookupByUUID,
-    .domainLookupByName = jailhouseDomainLookupByName,
-    .domainGetXMLDesc = jailhouseGetXMLDesc,
-    .domainCreate = jailhouseDomainCreate,
-    .connectGetType = jailhouseConnectGetType,
-    .connectGetHostname = jailhouseConnectGetHostname,
-    .nodeGetInfo = jailhousenodeGetInfo,
-    .domainShutdown = jailhouseDomainShutdown,
-    .domainDestroy = jailhouseDomainDestroy,
-    .domainGetInfo = jailhouseDomainGetInfo,
-    .domainGetState = jailhouseDomainGetState,
+    .connectOpen = jailhouseConnectOpen, /* 6.3.0 */
+    .connectClose = jailhouseConnectClose, /* 6.3.0 */
+    .connectListDomains = jailhouseConnectListDomains, /* 6.3.0 */
+    .connectNumOfDomains = jailhouseConnectNumOfDomains, /* 6.3.0 */
+    .connectListAllDomains = jailhouseConnectListAllDomains, /* 6.3.0 */
+    .domainLookupByID = jailhouseDomainLookupByID, /* 6.3.0 */
+    .domainLookupByUUID = jailhouseDomainLookupByUUID, /* 6.3.0 */
+    .domainLookupByName = jailhouseDomainLookupByName, /* 6.3.0 */
+    .domainGetXMLDesc = jailhouseDomainGetXMLDesc, /* 6.3.0 */
+    .domainCreate = jailhouseDomainCreate, /* 6.3.0 */
+    .connectGetType = jailhouseConnectGetType, /* 6.3.0 */
+    .connectGetHostname = jailhouseConnectGetHostname, /* 6.3.0 */
+    .nodeGetInfo = jailhouseNodeGetInfo, /* 6.3.0 */
+    .domainShutdown = jailhouseDomainShutdown, /* 6.3.0 */
+    .domainDestroy = jailhouseDomainDestroy, /* 6.3.0 */
+    .domainGetInfo = jailhouseDomainGetInfo, /* 6.3.0 */
+    .domainGetState = jailhouseDomainGetState, /* 6.3.0 */
 };
 
 static virConnectDriver jailhouseConnectDriver = {
@@ -183,7 +197,7 @@ static virConnectDriver jailhouseConnectDriver = {
 };
 
 int
-jailhouseRegister (void)
+jailhouseRegister(void)
 {
-    return virRegisterConnectDriver (&jailhouseConnectDriver, false);
+    return virRegisterConnectDriver(&jailhouseConnectDriver, false);
 }
