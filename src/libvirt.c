@@ -76,7 +76,7 @@
 # include "bhyve/bhyve_driver.h"
 #endif
 #ifdef WITH_JAILHOUSE
-# include "jailhouse/jailhouse_driver.h"
+#include "jailhouse/jailhouse_driver.h"
 #endif
 #include "access/viraccessmanager.h"
 
@@ -275,7 +275,7 @@ virGlobalInit(void)
         goto error;
 #endif
 #ifdef WITH_JAILHOUSE
-    if (jailhouseRegister() == -1)
+    if(jailhouseRegister() == -1)
         goto error;
 #endif
 #ifdef WITH_REMOTE
