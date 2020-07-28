@@ -1053,12 +1053,6 @@ exit 1
     %define arg_vmware --without-vmware
 %endif
 
-%if %{with_jailhouse}
-    %define arg_jailhouse --with-jailhouse
-%else
-    %define arg_jailhouse --without-jailhouse
-%endif
-
 %if %{with_storage_rbd}
     %define arg_storage_rbd --with-storage-rbd
 %else

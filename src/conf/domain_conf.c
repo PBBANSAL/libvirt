@@ -130,7 +130,6 @@ VIR_ENUM_IMPL(virDomainVirt,
               "parallels",
               "bhyve",
               "vz",
-              "jailhouse",
 );
 
 VIR_ENUM_IMPL(virDomainOS,

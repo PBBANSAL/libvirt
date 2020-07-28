@@ -134,7 +134,6 @@ VIR_ENUM_IMPL(virErrorDomain,
               "Thread jobs",
               "Admin Interface",
               "Log Manager",
-              "Jailhouse Driver",
               "Xen XL Config",
 
               "Perf", /* 65 */
